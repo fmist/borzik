@@ -24,3 +24,12 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/borzikdatabase
       SPRING_DATASOURCE_USERNAME: borzik
       SPRING_DATASOURCE_PASSWORD: borzik
+  frontend:
+      build:
+        context: src/main/borzikfrontend
+        dockerfile: Dockerfile
+      ports:
+        - "3000:3000"
+      image: 'frontend'
+      depends_on:
+        - backend
