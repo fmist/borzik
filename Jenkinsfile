@@ -1,7 +1,7 @@
 pipeline {
    agent any
    environment {
-           PATH = "$PATH:/usr/local/bin"
+           PATH = "$PATH:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
        }
     tools {
         gradle "gradle"
