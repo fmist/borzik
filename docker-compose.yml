@@ -1,0 +1,11 @@
+services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: borzik
+      MYSQL_DATABASE: borzikdatabase
+      MYSQL_USER: borzik
+      MYSQL_PASSWORD: borzik
+    ports:
+      - "3306:3306"
