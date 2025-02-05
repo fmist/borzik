@@ -9,6 +9,7 @@ services:
       MYSQL_PASSWORD: borzik
     ports:
       - "3306:3306"
+    restart: unless-stopped
   backend:
     container_name: backend
     image: 'backend'
