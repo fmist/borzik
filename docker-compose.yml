@@ -9,3 +9,17 @@ services:
       MYSQL_PASSWORD: borzik
     ports:
       - "3306:3306"
+  backend:
+    container_name: backend
+    image: 'backend'
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/borzikdatabase
+      SPRING_DATASOURCE_USERNAME: borzik
+      SPRING_DATASOURCE_PASSWORD: borzik
