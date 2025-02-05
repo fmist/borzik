@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping()
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8081"})
+@CrossOrigin(origins = {"http://192.168.50.210:3000", "http://192.168.50.210:8081"})
 @RequiredArgsConstructor
 public class BorzikController {
     private final BorzikService borzikService;

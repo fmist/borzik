@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const request = axios.create({baseURL: "http://localhost:8081"})
+const request = axios.create({baseURL: "http://192.168.50.210:8081"})
 
 export async function loadProducts(setProducts) {
     await request.get("/")
