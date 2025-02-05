@@ -39,21 +39,3 @@ services:
       image: 'frontend'
       depends_on:
         - backend
-
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
-    ports:
-      - "8080:8080"
-    volumes:
-      - ./jenkins_home:/var/jenkins_home
-    environment:
-      - JENKINS_OPTS="--prefix=/jenkins"
-    networks:
-      - jenkins-net
-
-networks:
-  jenkins-net:
-
-volumes:
-  jenkins_home:
