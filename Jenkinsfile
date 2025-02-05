@@ -1,7 +1,7 @@
 pipeline {
    agent any
    environment {
-           PATH = "$PATH:/var/jenkins_home"
+           PATH = "$PATH:/usr/local/bin/"
        }
     tools {
         gradle "gradle"
