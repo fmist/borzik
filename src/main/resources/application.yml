@@ -4,6 +4,9 @@ logging.level.root: info
 spring:
   application:
     name: borzik
+  output:
+    ansi:
+      enabled: always
   datasource:
     url: jdbc:mysql://localhost:3306/borzikdatabase
     username: borzik
