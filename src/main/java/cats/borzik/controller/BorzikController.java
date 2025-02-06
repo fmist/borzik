@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping()
@@ -24,30 +25,27 @@ public class BorzikController {
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<?> getById(@PathVariable Long id) {
+    private ResponseEntity<?> getById(@PathVariable UUID id) {
         return borzikService.getById(id);
     }
 
     @PostMapping("/add")
-    private ResponseEntity<Borzik> add(@RequestBody Borzik bo) throws URISyntaxException {
-        Borzik savedBo = borzikService.save(bo);
-        return ResponseEntity.created(new URI("/" + savedBo.getId()))
-                .body(savedBo);
+    private ResponseEntity<?> add(@RequestBody Borzik bo) throws URISyntaxException {
+        return borzikService.save(bo);
     }
 
     @PutMapping("/edit/{id}")
-    private ResponseEntity<?> update(@PathVariable Long id, @RequestBody Borzik bo) {
+    private ResponseEntity<?> update(@PathVariable UUID id, @RequestBody Borzik bo) {
         return borzikService.edit(id, bo);
     }
 
     @DeleteMapping("/delete/{id}")
-    private ResponseEntity<?> delete(@PathVariable Long id) {
+    private ResponseEntity<?> delete(@PathVariable UUID id) {
         return borzikService.delete(id);
     }
 
     @DeleteMapping("/clear")
     private ResponseEntity<?> clear() {
-        borzikService.deleteAll();
-        return new ResponseEntity<>("List cleared", HttpStatus.NO_CONTENT);
+        return borzikService.deleteAll();
     }
 }

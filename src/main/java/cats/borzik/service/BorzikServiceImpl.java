@@ -7,9 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,21 +23,21 @@ public class BorzikServiceImpl implements BorzikService {
     }
 
     @Override
-    public ResponseEntity<?> getById(Long id) {
+    public ResponseEntity<?> getById(UUID id) {
         Optional<Borzik> bo = borzikRepository.findById(id);
         if (bo.isEmpty()) {
-            throw new BorzikGlobalExceptionHandler.BorzikException("Id " + id + " not found");
+            throw new BorzikGlobalExceptionHandler.BorzikException("object with id " + id + " is not found");
         }
         return ResponseEntity.ok().body(bo);
     }
 
     @Override
-    public Borzik save(Borzik borzik) {
-        return borzikRepository.save(borzik);
+    public ResponseEntity<?> save(Borzik borzik) {
+        return new ResponseEntity<>(borzikRepository.save(borzik), HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<?> edit(Long id, Borzik borzik) {
+    public ResponseEntity<?> edit(UUID id, Borzik borzik) {
         if (borzikRepository.existsById(id)) {
             Borzik newBorzik = borzikRepository.findById(id).orElseThrow();
             newBorzik.setName(borzik.getName());
@@ -49,17 +49,18 @@ public class BorzikServiceImpl implements BorzikService {
     }
 
     @Override
-    public ResponseEntity<?> delete(Long id) {
+    public ResponseEntity<?> delete(UUID id) {
         if (borzikRepository.existsById(id)) {
             borzikRepository.deleteById(id);
-            return ResponseEntity.ok().body("Id " + id + " deleted");
+            return new ResponseEntity<>("object with id " + id + " is deleted", HttpStatus.OK);
         } else {
-            throw new BorzikGlobalExceptionHandler.BorzikException("Id " + id + " not found");
+            throw new BorzikGlobalExceptionHandler.BorzikException("object with id " + id + " is not found");
         }
     }
 
     @Override
-    public void deleteAll() {
+    public ResponseEntity<?> deleteAll() {
         borzikRepository.deleteAll();
+        return new ResponseEntity<>("database cleared", HttpStatus.OK);
     }
 }
