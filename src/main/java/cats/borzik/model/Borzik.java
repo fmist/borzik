@@ -6,6 +6,7 @@ import lombok.Data;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
@@ -24,7 +25,7 @@ public class Borzik {
     @PrePersist
     @PreUpdate
     public void getDateTimeCreated() {
-        LocalDateTime dateTime = LocalDateTime.now();
+        LocalDateTime dateTime = LocalDateTime.now(ZoneOffset.UTC);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd:MM:yyyy HH:mm:ss");
         time = dateTime.format(formatter);
     }
