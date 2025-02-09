@@ -3,18 +3,16 @@ package cats.borzik.controller;
 import cats.borzik.model.Borzik;
 import cats.borzik.service.BorzikService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping()
-@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:8081"})
+@CrossOrigin(origins = {"http://192.168.50.201:3000"})
 @RequiredArgsConstructor
 public class BorzikController {
     private final BorzikService borzikService;
