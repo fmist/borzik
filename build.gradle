@@ -68,7 +68,7 @@ tasks.register('cucumber') {
 sonar {
     properties {
         property "sonar.projectKey", "borzik"
-        property "sonar.projectName", "borzik"
-        property "sonar.token", "squ_acb8fdc9930addc92308403970abfbeda8af130e"
+        property "sonar.projectName", "borzikToken"
+        property "sonar.token", "sqp_a5c58ad646a984741827e522a2a192d0d92a4a32"
     }
 }
