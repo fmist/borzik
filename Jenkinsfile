@@ -19,11 +19,11 @@ pipeline {
                 sh "gradle clean build"
             }
         }
-//         stage('SonarQube Analysis') {
-//             steps {
-//               sh "gradle sonar"
-//             }
-//         }
+        stage('SonarQube Analysis') {
+            steps {
+              sh "gradle sonar"
+            }
+        }
         stage('UI Test') {
             steps {
                 sh "gradle cucumber"
