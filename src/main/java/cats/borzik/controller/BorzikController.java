@@ -13,6 +13,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping()
 @RequiredArgsConstructor
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3000"})
 public class BorzikController {
     private final BorzikService borzikService;
 
