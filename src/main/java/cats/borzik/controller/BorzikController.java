@@ -12,7 +12,6 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping()
-@CrossOrigin("*")
 @RequiredArgsConstructor
 public class BorzikController {
     private final BorzikService borzikService;
