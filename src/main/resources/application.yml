@@ -22,11 +22,6 @@ spring:
     init:
       mode: always
       platform: mysql
-  graphql:
-    cors:
-      allowed-origins: *
-      allowed-headers: *
-      allowed-methods: *
 springdoc:
   api-docs:
     enabled: true
