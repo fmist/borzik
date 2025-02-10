@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "gradle clean build -D"
+                sh "gradle clean build"
             }
         }
 //         stage('SonarQube Analysis') {
