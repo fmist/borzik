@@ -18,32 +18,32 @@ public class BorzikController {
     private final BorzikService borzikService;
 
     @GetMapping
-    private List<Borzik> getAll() {
+    List<Borzik> getAll() {
         return borzikService.getAll();
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<?> getById(@PathVariable UUID id) {
+    ResponseEntity<?> getById(@PathVariable UUID id) {
         return borzikService.getById(id);
     }
 
     @PostMapping("/add")
-    private ResponseEntity<?> add(@RequestBody Borzik bo) throws URISyntaxException {
+    ResponseEntity<?> add(@RequestBody Borzik bo) {
         return borzikService.save(bo);
     }
 
     @PutMapping("/edit/{id}")
-    private ResponseEntity<?> update(@PathVariable UUID id, @RequestBody Borzik bo) {
+    ResponseEntity<?> update(@PathVariable UUID id, @RequestBody Borzik bo) {
         return borzikService.edit(id, bo);
     }
 
     @DeleteMapping("/delete/{id}")
-    private ResponseEntity<?> delete(@PathVariable UUID id) {
+    ResponseEntity<?> delete(@PathVariable UUID id) {
         return borzikService.delete(id);
     }
 
     @DeleteMapping("/clear")
-    private ResponseEntity<?> clear() {
+    ResponseEntity<?> clear() {
         return borzikService.deleteAll();
     }
 }
