@@ -16,7 +16,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "gradle clean build -D skipTests"
+                sh "gradle clean build -D"
             }
         }
 //         stage('SonarQube Analysis') {
@@ -24,6 +24,11 @@ pipeline {
 //               sh "gradle sonar"
 //             }
 //         }
+        stage('UI Test') {
+            steps {
+                sh "gradle cucumber"
+            }
+        }
         stage('Deploy') {
              steps {
                sh "docker-compose up -d --wait --build"
