@@ -69,5 +69,6 @@ sonar {
     properties {
         property "sonar.projectKey", "borzik"
         property "sonar.projectName", "borzik"
+        property "sonar.token", "squ_acb8fdc9930addc92308403970abfbeda8af130e"
     }
 }
