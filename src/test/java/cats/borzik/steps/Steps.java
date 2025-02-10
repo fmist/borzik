@@ -16,7 +16,7 @@ public class Steps {
 
     @Given("Open main page borzik")
     public void open() {
-        Selenide.open("http://192.168.50.201:3000");
+        Selenide.open("http://localhost:3000");
         $(By.xpath("//a[@href='/']")).should(visible);
     }
 }

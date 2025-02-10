@@ -10,8 +10,8 @@ const Menubar = () => {
                 <Nav className="me-4">
                     <Nav.Link href="/">Bo's</Nav.Link>
                     <Nav.Link href="/add">New bo</Nav.Link>
-                    <Nav.Link href="http://192.168.50.201:8081/swagger" rel="noopener noreferrer" target="_blank">Swagger</Nav.Link>
-                    <Nav.Link href="http://192.168.50.201:8081/api" rel="noopener noreferrer" target="_blank">Api</Nav.Link>
+                    <Nav.Link href="http://localhost:8081/swagger" rel="noopener noreferrer" target="_blank">Swagger</Nav.Link>
+                    <Nav.Link href="http://localhost:8081/api" rel="noopener noreferrer" target="_blank">Api</Nav.Link>
                     <Nav.Link href="/about">About</Nav.Link>
                 </Nav>
             </Container>
