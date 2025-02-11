@@ -1,13 +1,16 @@
 import axios from "axios";
 
-const request = axios.create({baseURL: "http://localhost:8081"})
+const request = axios.create(
+    {
+        baseURL: "http://localhost:8081",
+        headers: {
+            'Access-Control-Allow-Origin': true
+        }
+    }
+)
 
 export async function loadProducts(setProducts) {
-    await request.get("/", {
-        headers: {
-            "Access-Control-Allow-Origin": "*"
-        }
-    })
+    await request.get("/")
         .then(response => {
                 setProducts(response.data)
                 console.log(response.data)
