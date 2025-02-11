@@ -30,6 +30,7 @@ const ModalDeleteProduct = ({OnChange}) => {
                     <Button variant="danger" onClick={
                         function (e) {
                             handleChange(e)
+                            location.reload()
                         }
                     }>
                         Submit
