@@ -2,10 +2,7 @@ import axios from "axios";
 
 const request = axios.create(
     {
-        baseURL: "http://localhost:8081",
-        headers: {
-            'Access-Control-Allow-Origin': true
-        }
+        baseURL: "http://localhost:8081"
     }
 )
 
