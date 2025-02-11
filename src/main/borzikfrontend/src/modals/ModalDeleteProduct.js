@@ -30,7 +30,6 @@ const ModalDeleteProduct = ({OnChange}) => {
                     <Button variant="danger" onClick={
                         function (e) {
                             handleChange(e)
-                            window.location.href = "/";
                         }
                     }>
                         Submit

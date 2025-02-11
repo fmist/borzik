@@ -48,7 +48,6 @@ const InputBar = () => {
                 function () {
                     addProduct(product)
                         .then(r => {console.log(r.data)})
-                    window.location.href = "/"
                 }
             }>Submit</Button>
         </Container>

@@ -53,7 +53,6 @@ const EditBar = () => {
             <Button onClick={
                 function () {
                     editProduct(id, product)
-                    window.location.href = "/";
                 }
             }>Submit</Button>
         </Container>
