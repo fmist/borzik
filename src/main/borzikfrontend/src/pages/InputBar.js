@@ -48,7 +48,7 @@ const InputBar = () => {
                 function () {
                     addProduct(product)
                         .then(r => {console.log(r.data)})
-                    location.reload()
+                    window.location.reload()
                 }
             }>Submit</Button>
         </Container>

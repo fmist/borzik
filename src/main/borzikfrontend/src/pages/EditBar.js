@@ -53,7 +53,7 @@ const EditBar = () => {
             <Button onClick={
                 function () {
                     editProduct(id, product)
-                    location.reload()
+                    window.location.reload()
                 }
             }>Submit</Button>
         </Container>
