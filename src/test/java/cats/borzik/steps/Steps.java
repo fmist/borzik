@@ -10,8 +10,6 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 
-@CucumberContextConfiguration
-@SpringBootTest
 public class Steps {
 
     @Given("Open main page borzik")

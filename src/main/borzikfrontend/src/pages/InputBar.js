@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Button, Container, Form, InputGroup} from "react-bootstrap";
 import {addProduct} from "../api/Axios";
+import {useNavigate} from "react-router";
 
 const InputBar = () => {
     const [product, setProduct] = useState(
@@ -9,6 +10,7 @@ const InputBar = () => {
             description: ""
         }
     )
+    const navigate = useNavigate()
     const {name, description} = product
     const onInputChange = (e) => {
         setProduct({...product, [e.target.name]: e.target.value})
@@ -47,8 +49,10 @@ const InputBar = () => {
             <Button onClick={
                 function () {
                     addProduct(product)
-                        .then(r => {console.log(r.data)})
-                    window.location.reload()
+                        .then(r => {
+                            console.log(r.data)
+                            navigate("/")
+                        })
                 }
             }>Submit</Button>
         </Container>

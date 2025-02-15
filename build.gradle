@@ -71,3 +71,7 @@ sonar {
         property "sonar.token", "sqp_a5c58ad646a984741827e522a2a192d0d92a4a32"
     }
 }
+
+test {
+    useJUnitPlatform()
+}

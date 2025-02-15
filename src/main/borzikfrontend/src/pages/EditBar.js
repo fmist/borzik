@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Button, Container, Form, InputGroup} from "react-bootstrap";
 import {editProduct, loadProduct} from "../api/Axios";
 import {useParams} from 'react-router';
+import {useNavigate} from "react-router";
 
 const EditBar = () => {
     const [product, setProduct] = useState(
@@ -10,6 +11,7 @@ const EditBar = () => {
             description: ""
         }
     )
+    const navigate = useNavigate()
 
     const onInputChange = (e) => {
         setProduct({...product, [e.target.name]: e.target.value})
@@ -53,7 +55,7 @@ const EditBar = () => {
             <Button onClick={
                 function () {
                     editProduct(id, product)
-                    window.location.reload()
+                    navigate("/")
                 }
             }>Submit</Button>
         </Container>
