@@ -68,6 +68,8 @@ services:
         - sonarnet
     volumes:
         - postgresql:/var/lib/postgresql
+    depends_on:
+      - frontend
 
 networks:
   sonarnet:
