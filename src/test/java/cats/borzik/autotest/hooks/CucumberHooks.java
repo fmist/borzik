@@ -1,4 +1,4 @@
-package cats.borzik.hooks;
+package cats.borzik.autotest.hooks;
 
 import com.codeborne.selenide.Configuration;
 import io.cucumber.java.After;
@@ -15,7 +15,6 @@ public class CucumberHooks {
 
     @After
     public void after() {
-        closeWindow();
         closeWebDriver();
     }
 }

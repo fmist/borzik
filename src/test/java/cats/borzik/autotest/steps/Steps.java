@@ -1,4 +1,4 @@
-package cats.borzik.steps;
+package cats.borzik.autotest.steps;
 
 import com.codeborne.selenide.Selenide;
 import io.cucumber.java.en.Given;
@@ -14,7 +14,7 @@ public class Steps {
 
     @Given("Open main page borzik")
     public void open() {
-        Selenide.open("http://localhost:3000");
+        Selenide.open("http://192.168.50.201:3000");
         $(By.xpath("//a[@href='/']")).should(visible);
     }
 }
