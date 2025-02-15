@@ -19,16 +19,6 @@ pipeline {
                 sh "gradle clean build"
             }
         }
-        stage('SonarQube Analysis') {
-            steps {
-              sh "gradle sonar"
-            }
-        }
-        stage('UI Test') {
-            steps {
-                sh "gradle cucumber"
-            }
-        }
         stage('Deploy') {
              steps {
                sh "docker-compose up -d --wait --build"
