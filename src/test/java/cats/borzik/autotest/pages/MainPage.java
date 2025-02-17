@@ -12,7 +12,7 @@ public class MainPage {
 
 
     public MainPage openMainPage() {
-        return Selenide.open("http://192.168.50.201:3000", MainPage.class);
+        return Selenide.open("localhost:3000", MainPage.class);
     }
 
     public void checkPageVisible() {
