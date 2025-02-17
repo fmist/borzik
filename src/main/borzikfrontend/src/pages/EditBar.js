@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Container, Form, InputGroup} from "react-bootstrap";
 import {editProduct, loadProduct} from "../api/Axios";
-import {useParams} from 'react-router';
-import {useNavigate} from "react-router";
+import {useNavigate, useParams} from 'react-router';
 
 const EditBar = () => {
     const [product, setProduct] = useState(
