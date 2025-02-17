@@ -7,6 +7,13 @@ spring:
   output:
     ansi:
       enabled: always
+  kafka:
+    bootstrap-servers: localhost:9093
+    consumer:
+      group-id: my-group
+      auto-offset-reset: earliest
+    template:
+      default-topic: my-topic
   datasource:
     url: jdbc:mysql://localhost:3306/borzikdatabase
     username: borzik
