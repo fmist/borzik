@@ -10,11 +10,11 @@ const InputBar = () => {
             description: ""
         }
     )
-    const navigate = useNavigate()
     const {name, description} = product
     const onInputChange = (e) => {
         setProduct({...product, [e.target.name]: e.target.value})
     }
+    const navigate = useNavigate()
 
     return (
         <Container className="w-50">
@@ -49,8 +49,7 @@ const InputBar = () => {
             <Button onClick={
                 function () {
                     addProduct(product)
-                        .then(r => {
-                            console.log(r.data)
+                        .then( r => {
                             navigate("/")
                         })
                 }

@@ -12,7 +12,7 @@ services:
       - "3306:3306"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
 
   backend:
     container_name: backend
@@ -23,52 +23,53 @@ services:
     ports:
       - "8081:8081"
     depends_on:
-       mysql:
-         condition: service_healthy
+      mysql:
+        condition: service_healthy
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/borzikdatabase
       SPRING_DATASOURCE_USERNAME: borzik
       SPRING_DATASOURCE_PASSWORD: borzik
 
   frontend:
-      build:
-        context: src/main/borzikfrontend
-        dockerfile: Dockerfile
-      ports:
-        - "3000:3000"
-      image: 'frontend'
-      depends_on:
-        - backend
-  sonarqube:
-    image: sonarqube:latest
-    container_name: sonarqube
+    build:
+      context: src/main/borzikfrontend
+      dockerfile: Dockerfile
     ports:
-      - "9092:9092"
-    environment:
-      - SONARQUBE_JDBC_USERNAME=sonarqube
-      - SONARQUBE_JDBC_PASSWORD=sonarqube
-      - SONARQUBE_JDBC_URL=jdbc:postgresql://postgres:5432/sonar
-    networks:
-      - sonarnet
-    volumes:
-      - sonarqube_data:/opt/sonarqube/data
-      - sonarqube_extensions:/opt/sonarqube/extensions
-      - sonarqube_logs:/opt/sonarqube/logs
+      - "3000:3000"
+    image: 'frontend'
     depends_on:
-      - postgres
+      - backend
+#  sonarqube:
+#    image: sonarqube:latest
+#    container_name: sonarqube
+#    ports:
+#      - "9093:9093"
+#    environment:
+#      - SONARQUBE_JDBC_USERNAME=sonarqube
+#      - SONARQUBE_JDBC_PASSWORD=sonarqube
+#      - SONARQUBE_JDBC_URL=jdbc:postgresql://postgres:5432/sonar
+#    networks:
+#      - sonarnet
+#    volumes:
+#      - sonarqube_data:/opt/sonarqube/data
+#      - sonarqube_extensions:/opt/sonarqube/extensions
+#      - sonarqube_logs:/opt/sonarqube/logs
+#    depends_on:
+#      - postgres
 
   postgres:
     image: postgres:latest
     container_name: postgres
     environment:
-        - POSTGRES_USER=sonarqube
-        - POSTGRES_PASSWORD=sonarqube
+      - POSTGRES_USER=sonarqube
+      - POSTGRES_PASSWORD=sonarqube
     networks:
-        - sonarnet
+      - sonarnet
     volumes:
-        - postgresql:/var/lib/postgresql
+      - postgresql:/var/lib/postgresql
     depends_on:
       - frontend
+
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     environment:
@@ -76,6 +77,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     ports:
       - "2181:2181"
+
   kafka:
     image: confluentinc/cp-kafka:latest
     depends_on:
@@ -83,20 +85,21 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
     ports:
-      - "9093:9093"
+      - "9092:9092"
       - "9997:9997"
+
   kafka-ui:
     container_name: kafka-ui
     image: provectuslabs/kafka-ui:latest
     ports:
-      - "8089:8089"
+      - "8082:8080"
     environment:
       DYNAMIC_CONFIG_ENABLED: true
     depends_on:

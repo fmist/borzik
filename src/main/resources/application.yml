@@ -18,6 +18,13 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: borzik-group
+      auto-offset-reset: earliest
+    template:
+      default-topic: borzik-topic
   sql:
     init:
       mode: always
